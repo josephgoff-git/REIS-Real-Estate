@@ -6,10 +6,15 @@
         "@ant-design/icons": "^4.7.0",
         "@supabase/supabase-js": "^2.32.0",
         "antd": "^4.17.4",
+        "dotenv": "^16.4.5",
+        "fs": "^0.0.1-security",
+        "mysql": "^2.18.1",
+        "net": "^1.0.2",
         "next": "^13.2.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.2.1"
+        "react-router-dom": "^6.2.1",
+        "tls": "^0.0.1"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.8",

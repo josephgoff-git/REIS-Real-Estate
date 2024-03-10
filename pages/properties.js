@@ -7,25 +7,37 @@ import {
 import Header from "../components/header";
 import PropertiesGridContainer from "../components/properties-grid-container";
 import Footer from "../components/footer";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react"; 
+// import mysql from "mysql"
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 
 const PropertiesGridView = () => {
-
   const [properties, setProperties] = useState([])
-
   useEffect(()=>{
     const fetchProperties = async () => {
-      const result = await client.from('properties').select('*')
-      setProperties(result.data)
+      const response  = await fetch("http://3.16.224.174:8080/properties")
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const properties = await response.json();
+      // console.log(properties);
+      setProperties(properties)
+
+      // const result = await client.from('properties').select('*')
+      // setProperties(result.data)
+      // console.log(result.data)
     }
     fetchProperties()
   },[])
 
-  const client = createClient(
-    process.env.NEXT_PUBLIC_URL,
-    process.env.NEXT_PUBLIC_KEY
-  )
+  // const client = createClient(
+  //   process.env.NEXT_PUBLIC_URL,
+  //   process.env.NEXT_PUBLIC_KEY
+  // )
 
   const defaultOrder = [
     {

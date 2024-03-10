@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import AreaCard from "./area-card";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 
 // const [properties, setProperties] = useState([])
 // const [popularLocations, setPopularLocations] = useState([])

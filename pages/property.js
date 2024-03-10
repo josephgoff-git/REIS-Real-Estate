@@ -7,7 +7,7 @@ import {
 import Header from "../components/header";
 import PropertyContainer from "../components/property-container";
 import Footer from "../components/footer";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react"; 
 
 const PropertiesGridView = () => {
@@ -16,16 +16,23 @@ const PropertiesGridView = () => {
 
   useEffect(()=>{
     const fetchProperties = async () => {
-      const result = await client.from('properties').select('*')
-      setProperties(result.data)
+      // const result = await client.from('properties').select('*')
+      // setProperties(result.data)
+      const response  = await fetch("http://3.16.224.174:8080/properties")
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const properties = await response.json();
+      // console.log(properties);
+      setProperties(properties)
     }
     fetchProperties()
   },[])
 
-  const client = createClient(
-    process.env.NEXT_PUBLIC_URL,
-    process.env.NEXT_PUBLIC_KEY
-  )
+  // const client = createClient(
+  //   process.env.NEXT_PUBLIC_URL,
+  //   process.env.NEXT_PUBLIC_KEY
+  // )
 
   const [sideBar, setSideBar] = useState(false)
 
